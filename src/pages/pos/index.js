@@ -108,6 +108,7 @@ function POSPage() {
       setCurrentUserSession({
         account: data.posData,
         bitcoinPrice: data.bitcoinPrice,
+        usdPriceResponse: data.usdPriceResponse,
       });
       didLoadPOS.current = true;
     }
@@ -206,7 +207,7 @@ function POSPage() {
               {formatBalanceAmount(
                 displayCorrectDenomination({
                   amount: !currentSettings?.displayCurrency?.isSats
-                    ? ((chargeAmount / 100) * dollarSatValue).toFixed(2)
+                    ? ((chargeAmount / 100) * dollarSatValue).toFixed(0)
                     : (chargeAmount / dollarSatValue).toFixed(2),
                   fiatCurrency:
                     currentUserSession.account.storeCurrency || "USD",
